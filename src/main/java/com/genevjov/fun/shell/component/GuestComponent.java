@@ -21,7 +21,7 @@ public class GuestComponent {
     }
 
     @ShellMethod("Add guest to program.")
-    public void addGuest (
+    public void addGuest(
             @ShellOption String name) {
         GuestEntity guestEntity = new GuestEntity();
         guestEntity.setFullName(name);
@@ -29,8 +29,20 @@ public class GuestComponent {
         guestService.addGuest(guestEntity);
     }
 
-    @ShellMethod("Returns list of all guests.")
-    public List<GuestEntity> guests(){
+    @ShellMethod("Returns list of all guestsList.")
+    public List<GuestEntity> guestsList() {
         return guestService.getAllGuest();
+    }
+
+    @ShellMethod("Removes guest by id.")
+    public void removeGuestById(
+            @ShellOption String guestId) {
+        guestService.removeGuestById(guestId);
+    }
+
+    @ShellMethod("Removes guest by name.")
+    public void removeGuestByName(
+            @ShellOption String guestFullName) {
+        guestService.removeGuestByName(guestFullName);
     }
 }
